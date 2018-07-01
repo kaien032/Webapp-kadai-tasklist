@@ -1,25 +1,32 @@
 <h1>新規作成ページ</h1>
 
-<%= form_for(@task) do |f| %>
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
 
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% @task.errors.full_messages.each do |task| %>
-          <li><%= task %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <%= f.label :status, "状態" %>
-  <%= f.text_field :status %>
+    <%= form_for(@task) do |f| %>
 
-  <%= f.label :content, "タスク" %>
-  <%= f.text_field :content %>
+      <% if @task.errors.any? %>
+        <div  class="alert alert-warning">
+          <ul>
+            <% @task.errors.full_messages.each do |task| %>
+              <li><%= task %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
   
-  <%= f.submit "投稿" %>
-  
-<% end %>
+      <div class="form-group">
+        <%= f.label :status, '状態' %>
+        <%= f.text_field :status, class: 'form-control' %>
+      </div>
 
-<%= link_to "一覧に戻る", tasks_path %>
+      <div class="form-group">
+        <%= f.label :content, 'タスク' %>
+        <%= f.text_field :content, class: 'form-control' %>
+      </div>
+      
+      <%= f.submit "投稿", class: "btn btn-primary" %>
+      
+    <% end %>
+  </div>
+</div>
